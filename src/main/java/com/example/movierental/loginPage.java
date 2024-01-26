@@ -50,13 +50,19 @@ public class loginPage {
    private Text txt_notAccount;
    @FXML
    void click_customer(MouseEvent event) throws SQLException, IOException {
-      String SQLCom = String.format("select staff_id from manager where email = '%s' and password = '%s'",textFielde_email.getText(),textFielde_pass.getText()) ;
+      String SQLCom;
+      if (textFielde_pass.getText().isEmpty()) {
+         SQLCom = String.format("select customer_id from customer where email = '%s' and password IS NULL", textFielde_email.getText());
+      }else {
+         SQLCom = String.format("select customer_id from customer where email = '%s' and password = '%s'", textFielde_email.getText(), textFielde_pass.getText());
+      }
+
       MySQLConnection sql = new MySQLConnection() ;
       ResultSet res  =  sql.ExecuteQuery(SQLCom) ;
       if (res.next()) {
-         int staffId = res.getInt("staff_id");
+         int staffId = res.getInt("customer_id");
          HelloApplication.id.add(staffId) ;
-         System.out.println("Manager ID: " + staffId);
+         System.out.println("Customer ID: " + staffId);
 
       } else {
          //ورودی اشتباه
@@ -73,12 +79,20 @@ public class loginPage {
 
    @FXML
    void click_manager(MouseEvent event) throws SQLException, IOException {
-      String SQLCom = String.format("select staff_id from manager where email = '%s' and password = '%s'",textFielde_email.getText(),textFielde_pass.getText()) ;
+      String SQLCom;
+      if (textFielde_pass.getText().isEmpty()) {
+         SQLCom = String.format("select manager_id from manager where email = '%s' and password IS NULL", textFielde_email.getText());
+      } else {
+         SQLCom = String.format("select manager_id from manager where email = '%s' and password = '%s'", textFielde_email.getText(), textFielde_pass.getText());
+      }
+
       MySQLConnection sql = new MySQLConnection() ;
       ResultSet res  =  sql.ExecuteQuery(SQLCom) ;
-      if (res.next()) {
-         int staffId = res.getInt("staff_id");
+      if (res.next() ) {
+         int staffId = res.getInt("manager_id");
          HelloApplication.id.add(staffId) ;
+         //رفتن به پنل منیجر
+
          System.out.println("Manager ID: " + staffId);
       } else {
          //ورودی اشتباه
@@ -94,8 +108,14 @@ public class loginPage {
 
 
    @FXML
-   void click_signUp(MouseEvent event) {
-
+   void click_signUp(MouseEvent event) throws IOException {
+      Parent parent = FXMLLoader.load(HelloApplication.class.getResource("signupPage.fxml"));
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      Scene scene = new Scene(parent);
+      stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+      stage.setTitle("Movie Rental");
+      stage.setScene(scene);
+      stage.show();
    }
 
 }
