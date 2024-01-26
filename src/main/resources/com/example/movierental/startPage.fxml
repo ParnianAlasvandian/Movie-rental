@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movierental.startPage">
+   <children>
+      <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="312.0" layoutX="18.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="465.0" />
+      <ImageView fx:id="image_start" fitHeight="173.0" fitWidth="179.0" layoutX="295.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/TAK/Downloads/1_XoeeNuOWv10KDVg9Gad3dg.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="txt_start" layoutX="31.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello, welcome to movie rental site !" wrappingWidth="403.02734375">
+         <font>
+            <Font name="Britannic Bold" size="25.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="butt_start" accessibleRole="BUTTON" accessibleText="butt_start" fitHeight="124.0" fitWidth="136.0" layoutX="61.0" layoutY="172.0" onMouseClicked="#clickStart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/TAK/Downloads/5261929.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
