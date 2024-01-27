@@ -18,6 +18,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static com.example.movierental.Store.allStores;
+
 public class signupPage {
 
     @FXML
@@ -74,11 +76,14 @@ public class signupPage {
     @FXML
     private TextField userName_field;
 
+
+
     @FXML
     void click_customer(MouseEvent event) throws SQLException, IOException {
+
         // اگه جای خالی بود
         if (name_field.getText().isEmpty() || lastName_field.getText().isEmpty() || email_field.getText().isEmpty() || addID_field.getText().isEmpty() || userName_field.getText().isEmpty()){
-            Parent parent = FXMLLoader.load(HelloApplication.class.getResource("errorPage.fxml"));
+            Parent parent = FXMLLoader.load(HelloApplication.class.getResource("error.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(parent);
             stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
@@ -92,6 +97,14 @@ public class signupPage {
         Boolean res  =  sql.ExecuteSQL(SQLCom) ;
 
         if (res ) {
+            Parent parent = FXMLLoader.load(HelloApplication.class.getResource("successfulPage.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(parent);
+            stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+            stage.setTitle("Movie Rental");
+            stage.setScene(scene);
+            stage.show();
+
             System.out.println("gi");
         }
         else {
@@ -106,9 +119,34 @@ public class signupPage {
 
     }
 
+////////////////////////////////////////////////////////////////////////////////////
 
     @FXML
     void click_manager(MouseEvent event) throws IOException {
+        //در اری لیست تمامی استورهای موجود را می آوریم
+        MySQLConnection sql2 = new MySQLConnection() ;
+        String s2 = String.format("SELECT store_id,address_id,status FROM store where status = '%s'",0) ;
+        ResultSet res2 = sql2.ExecuteQuery(s2);
+
+        if (res2==null)
+            System.out.println("-Error !");
+        else
+            while (true)
+            {
+                try {
+                    if (!res2.next()) break;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    allStores.add(new Store(res2.getInt("store_id"),res2.getInt("address_id"),res2.getInt("status"))) ;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+
+                }
+            }
+        //
         // اگه جای خالی بود
         if (name_field.getText().isEmpty() || lastName_field.getText().isEmpty() || email_field.getText().isEmpty() || addID_field.getText().isEmpty() || userName_field.getText().isEmpty()){
             Parent parent = FXMLLoader.load(HelloApplication.class.getResource("errorPage.fxml"));
@@ -125,7 +163,15 @@ public class signupPage {
         Boolean res  =  sql.ExecuteSQL(SQLCom) ;
 
         if (res) {
-            System.out.println("hey");
+
+            Parent parent = FXMLLoader.load(HelloApplication.class.getResource("chooseStore.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(parent);
+            stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+            stage.setTitle("Movie Rental");
+            stage.setScene(scene);
+            stage.show();
+            //System.out.println("hey");
         }
         else {
             Parent parent = FXMLLoader.load(HelloApplication.class.getResource("errorPage.fxml"));
@@ -136,6 +182,8 @@ public class signupPage {
             stage.setScene(scene);
             stage.show();
         }
+
+
 
     }
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movierental.managerPannel">
+   <children>
+      <Rectangle fx:id="rectrangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="312.0" layoutX="21.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="457.0" />
+   </children>
+</AnchorPane>
