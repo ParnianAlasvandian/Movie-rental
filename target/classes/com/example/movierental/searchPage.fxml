@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="350.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movierental.searchPage">
+   <children>
+      <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="315.0" layoutX="22.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="470.0" />
+      <Label fx:id="lbl1" layoutX="33.0" layoutY="48.0" text="-You can search based on the following parameters:">
+         <font>
+            <Font name="Britannic Bold" size="19.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_actorID" layoutX="167.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#click_ActorID" prefHeight="38.0" prefWidth="132.0" style="-fx-background-color: blue;" text="Actor's ID" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="btn_Genre" layoutX="52.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#click_Genre" style="-fx-background-color: blue;" text="Genre" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="btn_filmName" layoutX="321.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#click_FilmName" style="-fx-background-color: blue;" text="Film's Name" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="btn_FilmLang" layoutX="52.0" layoutY="238.0" mnemonicParsing="false" onMouseClicked="#click_FilmLanguage" prefHeight="38.0" prefWidth="162.0" style="-fx-background-color: blue;" text="Film's Language" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="btn_FilmYear" layoutX="263.0" layoutY="238.0" mnemonicParsing="false" onMouseClicked="#click_FilmYear" style="-fx-background-color: blue;" text="Film's Year" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font></Button>
+      <Label fx:id="lbl2" layoutX="57.0" layoutY="105.0" prefHeight="32.0" prefWidth="98.0" text="Search -&gt;">
+         <font>
+            <Font name="Comic Sans MS Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="serchField" layoutX="167.0" layoutY="102.0" prefHeight="38.0" prefWidth="270.0" promptText="like comedy or 1 or title or English or 20012" />
+      <Button fx:id="btn_home" layoutX="429.0" layoutY="296.0" mnemonicParsing="false" onMouseClicked="#click_home" text="Home" textFill="#2007fa">
+         <font>
+            <Font name="Comic Sans MS Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

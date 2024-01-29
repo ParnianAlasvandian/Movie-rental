@@ -26,6 +26,7 @@ public class errorPage {
 
     @FXML
     void click_home(MouseEvent event) throws IOException {
+        HelloApplication.id.clear();
         Parent parent = FXMLLoader.load(HelloApplication.class.getResource("loginPage.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent);

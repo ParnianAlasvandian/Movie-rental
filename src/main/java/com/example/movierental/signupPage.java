@@ -122,7 +122,7 @@ public class signupPage {
 ////////////////////////////////////////////////////////////////////////////////////
 
     @FXML
-    void click_manager(MouseEvent event) throws IOException {
+    void click_manager(MouseEvent event) throws IOException, SQLException {
         //در اری لیست تمامی استورهای موجود را می آوریم
         MySQLConnection sql2 = new MySQLConnection() ;
         String s2 = String.format("SELECT store_id,address_id,status FROM store where status = '%s'",0) ;
@@ -163,6 +163,13 @@ public class signupPage {
         Boolean res  =  sql.ExecuteSQL(SQLCom) ;
 
         if (res) {
+            String SQLCom2 = String.format("select manager_id from manager where email = '%s' and password = '%s'", email_field.getText(), pass_field.getText());
+            ResultSet res22  =  sql.ExecuteQuery(SQLCom2) ;
+
+            if (res22.next() ) {
+                int mangID = res22.getInt("manager_id");
+                HelloApplication.id.add(mangID) ;
+            }
 
             Parent parent = FXMLLoader.load(HelloApplication.class.getResource("chooseStore.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

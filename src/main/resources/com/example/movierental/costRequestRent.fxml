@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movierental.costRequestRent">
+   <children>
+      <Rectangle fx:id="rectangl" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="318.0" layoutX="23.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="459.0" />
+      <Label fx:id="lbl1" layoutX="43.0" layoutY="34.0" prefHeight="44.0" prefWidth="426.0" text="-Enter the inventory id that you want to rent :">
+         <font>
+            <Font name="Britannic Bold" size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table" layoutX="62.0" layoutY="87.0" prefHeight="99.0" prefWidth="238.0">
+        <columns>
+          <TableColumn fx:id="colInvenID" prefWidth="91.20001983642578" text="Inventory ID" />
+          <TableColumn fx:id="colFilmID" prefWidth="65.60003662109375" text="Film ID" />
+            <TableColumn fx:id="colStoreID" prefWidth="76.800048828125" text="Store ID" />
+        </columns>
+      </TableView>
+      <Label fx:id="lbl2" layoutX="62.0" layoutY="212.0" prefHeight="44.0" prefWidth="127.0" text="Inventory ID  --&gt;">
+         <font>
+            <Font name="Berlin Sans FB" size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fieldTXT" layoutX="197.0" layoutY="222.0" prefHeight="26.0" prefWidth="150.0" promptText="like 2" />
+      <Button fx:id="btn1" layoutX="365.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#click_Done" style="-fx-background-color: blue;" text="Done" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn2" layoutX="417.0" layoutY="292.0" mnemonicParsing="false" onMouseClicked="#click_home" style="-fx-background-color: blue;" text="Home" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="13.0" />
+         </font>
+      </Button>
+      <DatePicker fx:id="returnDate" layoutX="328.0" layoutY="137.0" onAction="#acReturnDate" prefHeight="26.0" prefWidth="114.0" promptText="Return Date" />
+      <DatePicker fx:id="rentalDate" layoutX="329.0" layoutY="87.0" onAction="#ac_rentalDate" prefHeight="26.0" prefWidth="113.0" promptText="Rental Date" />
+   </children>
+</AnchorPane>

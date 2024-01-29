@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movierental.whichStore">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="310.0" layoutX="26.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" width="454.0" />
+      <Label fx:id="lbl1" layoutX="50.0" layoutY="47.0" text="-Which store do you want to enter ?">
+         <font>
+            <Font name="Britannic Bold" size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table" layoutX="50.0" layoutY="93.0" prefHeight="168.0" prefWidth="150.0">
+        <columns>
+          <TableColumn fx:id="colStoreID" prefWidth="78.40003204345703" text="Store_ID" />
+          <TableColumn fx:id="colAddressID" prefWidth="71.99993896484375" text="Address_ID" />
+        </columns>
+      </TableView>
+      <Label fx:id="lb2" layoutX="238.0" layoutY="179.0" text="Store_ID :">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFieldID" layoutX="332.0" layoutY="177.0" prefHeight="26.0" prefWidth="85.0" promptText="like 2" />
+      <Button fx:id="btnNext" layoutX="377.0" layoutY="263.0" mnemonicParsing="false" onMouseClicked="#clickNext" prefHeight="34.0" prefWidth="67.0" style="-fx-background-color: blue;" text="Next" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnLogOut" layoutX="253.0" layoutY="263.0" mnemonicParsing="false" onMouseClicked="#clickLogout" style="-fx-background-color: blue;" text="LogOut" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

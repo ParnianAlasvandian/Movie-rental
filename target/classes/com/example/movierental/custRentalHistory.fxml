@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="350.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movierental.custRentalHistory">
+   <children>
+      <Rectangle fx:id="rectangl" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="314.0" layoutX="23.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="506.0" />
+      <Label fx:id="lbl1" layoutX="53.0" layoutY="42.0" text="-Result :">
+         <font>
+            <Font name="Britannic Bold" size="30.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table" layoutX="85.0" layoutY="100.0" prefHeight="123.0" prefWidth="358.0">
+        <columns>
+          <TableColumn fx:id="colTitle" prefWidth="121.60003662109375" text="Title" />
+          <TableColumn fx:id="colRentalDate" prefWidth="145.5999755859375" text="Rental Date" />
+            <TableColumn fx:id="colReleaseYear" prefWidth="88.79998779296875" text="Release Year" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn1" layoutX="444.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#clickHome" style="-fx-background-color: blue;" text="home" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static com.example.movierental.Store.managerStores;
+
 
 public class loginPage {
 
@@ -60,9 +62,17 @@ public class loginPage {
       MySQLConnection sql = new MySQLConnection() ;
       ResultSet res  =  sql.ExecuteQuery(SQLCom) ;
       if (res.next()) {
-         int staffId = res.getInt("customer_id");
-         HelloApplication.id.add(staffId) ;
-         System.out.println("Customer ID: " + staffId);
+         int custId = res.getInt("customer_id");
+         HelloApplication.id.add(0,custId) ;
+         HelloApplication.p.add(0,1) ;
+         Parent parent = FXMLLoader.load(HelloApplication.class.getResource("customerPannel.fxml"));
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+         Scene scene = new Scene(parent);
+         stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+         stage.setTitle("Movie Rental");
+         stage.setScene(scene);
+         stage.show();
+         System.out.println("Customer ID: " + custId);
 
       } else {
          //ورودی اشتباه
@@ -90,9 +100,40 @@ public class loginPage {
       ResultSet res  =  sql.ExecuteQuery(SQLCom) ;
       if (res.next() ) {
          int staffId = res.getInt("manager_id");
-         HelloApplication.id.add(staffId) ;
-         //رفتن به پنل منیجر
+         //در اری لیست تمامی استورهای این کاربر را می آوریم
+         MySQLConnection sql2 = new MySQLConnection() ;
+         String s2 = String.format("SELECT store_id,address_id FROM store natural join storeManagement  where manager_id = %s",staffId) ;
+         ResultSet res2 = sql2.ExecuteQuery(s2);
 
+         if (res2==null)
+            System.out.println("-Error !");
+         else
+            while (true)
+            {
+               try {
+                  if (!res2.next()) break;
+               } catch (SQLException e) {
+                  e.printStackTrace();
+               }
+
+               try {
+                  managerStores.add(new Store(res2.getInt("store_id"),res2.getInt("address_id"))) ;
+               } catch (SQLException e) {
+                  e.printStackTrace();
+
+               }
+            }
+
+         HelloApplication.id.add(0,staffId) ;
+         HelloApplication.p.add(0,0) ;
+         //رفتن به پنل منیجر
+         Parent parent = FXMLLoader.load(HelloApplication.class.getResource("whichStore.fxml"));
+         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+         Scene scene = new Scene(parent);
+         stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+         stage.setTitle("Movie Rental");
+         stage.setScene(scene);
+         stage.show();
          System.out.println("Manager ID: " + staffId);
       } else {
          //ورودی اشتباه

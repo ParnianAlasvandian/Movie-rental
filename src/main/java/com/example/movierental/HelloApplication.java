@@ -13,7 +13,12 @@ import java.sql.* ;
 
 
 public class HelloApplication extends Application {
-    static ArrayList<Integer> id = new ArrayList<>();
+    static public ArrayList<Integer> id = new ArrayList<>();
+    static public ArrayList<Integer> storeID = new ArrayList<>();
+    static public ArrayList<Integer> p = new ArrayList<>();
+
+
+
 
     @Override
 
